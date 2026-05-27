@@ -34,8 +34,9 @@ inicio
    leia(acesso0)
   //primeira area de acesso
    se (acesso0 = "1") entao
+//repetição de seguraça com [enquanto]
    tentaNovamente <- "SIM"
- enquanto (tentaNovamente = "SIM") faca
+ enquanto (tentaNovamente = "SIM") e ((agencia <> agencia0) ou (conta <> conta0) ou ( senha <> senha2)) faca
       limpatela
       escreval ("------------------------------------")
       escreval ("    Digite o Número da Sua Agencia  ")
@@ -47,8 +48,7 @@ inicio
       escreval ("    Digite a Sua Senha      ")
       leia (senha0)
 
-        tentaNovamente <- "SIM"
-      //validando o acesso da agencia
+ //validando o acesso da agencia se digito so número e transforma em [asc] liguagem so computador
       para contador0 <- 1 ate compr(agencia0) faca
              agencia1 <- asc (copia(agencia0, contador0,1))
              se (agencia1 < 48) ou (agencia1 > 57) entao
@@ -58,7 +58,7 @@ inicio
              fimse
       fimpara
       
-      //validando o acesso da conta
+  //validando o acesso da conta se digito so número e transforma em [asc] liguagem so computador
       para contador0 <- 1 ate compr(conta0) faca
            conta1 <- asc (copia(conta0, contador0, 1))
            se (conta1 < 48) ou (conta1 > 57) entao
@@ -68,7 +68,7 @@ inicio
            fimse
       fimpara
       
-       // transformando senha caractere para número
+ //validando o acesso da senha se digito so número e transforma em [asc] liguagem so computador
       para contador0 <- 1 ate compr(senha0) faca
          senha1 <- asc(copia(senha0, contador0, 1))
          se (senha1 < 48) ou (senha1 > 57) entao
@@ -96,17 +96,17 @@ inicio
       
          escreval ("ERRO! Senha invalida")
       fimse
-      
+//validação tanto do se é tudo número e o tamanho esta correto
+//
       se (erro = verdadeiro) ou (compr(agencia0) <> 4) ou (erro1 = verdadeiro) ou (compr(conta0) <> 5) ou (erro2 = verdadeiro) ou (compr(senha0) <> 4) entao
-                tentaNovamente <- maiusc(tentaNovamente)
+
          escreval ("Gostaria de tenta novamente")
          leia (tentaNovamente)
+         tentaNovamente <- maiusc(tentaNovamente)
       senao
       
     //PARA ESTORA O LAÇO DE REPETIÇÃO DO ENQUANTO
-           se (agencia = agencia0) e (conta = conta0) e ( senha = senha2) e (passa = verdadeiro) entao
-                tentaNovamente <- "NAO"
-           fimse
+
       fimse
  fimenquanto
    fimse
