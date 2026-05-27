@@ -46,15 +46,13 @@ inicio
       escreval ("------------------------------------")
       escreval ("    Digite a Sua Senha      ")
       leia (senha0)
-        erro <- verdadeiro
-        erro1 <- verdadeiro
-        erro2 <- verdadeiro
+
         tentaNovamente <- "SIM"
       //validando o acesso da agencia
       para contador0 <- 1 ate compr(agencia0) faca
              agencia1 <- asc (copia(agencia0, contador0,1))
              se (agencia1 < 48) ou (agencia1 > 57) entao
-                erro <- falso
+                erro <- verdadeiro
              senao
                   passa <- verdadeiro
              fimse
@@ -62,9 +60,9 @@ inicio
       
       //validando o acesso da conta
       para contador0 <- 1 ate compr(conta0) faca
-           conta1 <- asc (copia(conta0, contador, 1))
+           conta1 <- asc (copia(conta0, contador0, 1))
            se (conta1 < 48) ou (conta1 > 57) entao
-              erro1 <- falso
+              erro1 <- verdadeiro
            senao
                 passa <- verdadeiro
            fimse
@@ -74,7 +72,7 @@ inicio
       para contador0 <- 1 ate compr(senha0) faca
          senha1 <- asc(copia(senha0, contador0, 1))
          se (senha1 < 48) ou (senha1 > 57) entao
-            erro2 <- falso
+            erro2 <- verdadeiro
          senao
             senha2 <- caracpnum(senha0)
             passa <- verdadeiro
@@ -82,31 +80,37 @@ inicio
 
       fimpara
       
-      se (erro = falso) ou (compr(agencia0) <> 4)entao
+      se (erro = verdadeiro) ou (compr(agencia0) <> 4)entao
       
          escreval ("ERRO! Número da agencia invalida.")
       
       fimse
 
-      se (erro1 = falso) ou (compr(conta0) <> 5) entao
+      se (erro1 = verdadeiro) ou (compr(conta0) <> 5) entao
       
          escreval ("ERRO! Número da conta invalida")
          
       fimse
       
-      se (erro2 = falso) ou (compr(senha0) <> 4) entao
+      se (erro2 = verdadeiro) ou (compr(senha0) <> 4) entao
       
          escreval ("ERRO! Senha invalida")
       fimse
       
-      se (erro = falso) ou (compr(agencia0) <> 4) ou (erro1 = falso) ou (compr(conta0) <> 5) ou (erro2 = falso) ou (compr(senha0) <> 4) entao
+      se (erro = verdadeiro) ou (compr(agencia0) <> 4) ou (erro1 = verdadeiro) ou (compr(conta0) <> 5) ou (erro2 = verdadeiro) ou (compr(senha0) <> 4) entao
                 tentaNovamente <- maiusc(tentaNovamente)
          escreval ("Gostaria de tenta novamente")
          leia (tentaNovamente)
+      senao
       
+    //PARA ESTORA O LAÇO DE REPETIÇÃO DO ENQUANTO
+           se (agencia = agencia0) e (conta = conta0) e ( senha = senha2) e (passa = verdadeiro) entao
+                tentaNovamente <- "NAO"
+           fimse
       fimse
-   fimse
  fimenquanto
+   fimse
+
     // validando agencia, conta e senha
       se (agencia = agencia0) e (conta = conta0) e ( senha = senha2) e (passa = verdadeiro) entao
          limpatela
